@@ -1,0 +1,13 @@
+.font-inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.btn-slide {
+  overflow-x: scroll;
+  scrollbar-color: transparent transparent;
+}
+
+.btn-slide::-webkit-scrollbar {
+  display: none;
+}
