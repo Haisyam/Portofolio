@@ -1,4 +1,4 @@
-const username = "Haisyam";
+const username = "fatkhurrhn";
 const repoContainer = document.getElementById("repos");
 
 // Fungsi untuk mengambil semua halaman repository
@@ -44,8 +44,10 @@ function displayRepositories(repos) {
       <h2 class="text-lg font-bold text-gray-800">
         <a href="${repo.html_url}" target="_blank">${repo.name}</a>
       </h2>
-      <p class="text-gray-600">${repo.description || "No description"}</p>
-      <p class="text-sm text-gray-500 mt-2">
+      <p class="text-sm text-gray-600">${
+        repo.description || "No description"
+      }</p>
+      <p class="text-xs text-gray-500 mt-2">
         Updated at: ${new Date(repo.updated_at).toLocaleString()}
       </p>
         `;
@@ -62,3 +64,16 @@ async function loadRepositories() {
 // Memanggil loadRepositories() secara berkala untuk update real-time
 loadRepositories();
 setInterval(loadRepositories, 60000); // Update setiap 60 detik
+
+function searchRepositories() {
+  const searchInput = document.getElementById("search").value.toLowerCase();
+  const repoElements = document.querySelectorAll("#repos > div");
+
+  repoElements.forEach((repoElement) => {
+    const repoName = repoElement.querySelector("h2").textContent.toLowerCase();
+    // Tampilkan hanya repository yang sesuai dengan input pencarian
+    repoElement.style.display = repoName.includes(searchInput)
+      ? "block"
+      : "none";
+  });
+}
