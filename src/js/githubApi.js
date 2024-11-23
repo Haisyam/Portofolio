@@ -1,4 +1,4 @@
-const username = "Haisyams";
+const username = "Haisyam";
 const repoContainer = document.getElementById("repos");
 
 // Fungsi untuk mengambil semua halaman repository

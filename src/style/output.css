@@ -1443,10 +1443,6 @@ html {
   height: 8rem;
 }
 
-.h-4 {
-  height: 1rem;
-}
-
 .h-5 {
   height: 1.25rem;
 }
@@ -1461,10 +1457,6 @@ html {
 
 .w-28 {
   width: 7rem;
-}
-
-.w-4 {
-  width: 1rem;
 }
 
 .w-5 {
@@ -1653,10 +1645,6 @@ html {
   background-repeat: no-repeat;
 }
 
-.fill-\[\#172554\] {
-  fill: #172554;
-}
-
 .fill-\[\#757575\] {
   fill: #757575;
 }
@@ -1671,10 +1659,6 @@ html {
 
 .fill-\[\#ffffff\] {
   fill: #ffffff;
-}
-
-.fill-\[\#\] {
-  fill: #;
 }
 
 .stroke-current {
