@@ -81,7 +81,7 @@
             </button>
           </label>
         </form>
-        <div id="result" class="mt-5 mb-10 hidden">
+        <div id="result" class="mt-5 mb-[60px] hidden">
           <div class="text-center">
             <video
               id="video-result"
@@ -92,7 +92,7 @@
             <a
               id="video-link"
               href="#"
-              class="bg-blue-500 text-white text-center py-2 px-4 rounded-md hover:bg-blue-600 transition space-x-1"
+              class="bg-blue-500 text-white text-center py-2 px-4 rounded-md hover:bg-blue-600 transition mr-2"
             >
               Download HD Video
             </a>
@@ -211,6 +211,13 @@
       </div>
     </footer>
     <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back(); // Kembali ke halaman sebelumnya
+        } else {
+          alert(""); // Jika tidak ada halaman sebelumnya
+        }
+      }
       document
         .getElementById("downloadForm")
         .addEventListener("submit", function (event) {

@@ -84,44 +84,74 @@
       </div>
     </header>
     <main>
-      <section id="categories" class="px-5 pt-4">
-        <h2 class="font-semibold mb-3">Category</h2>
-        <div class="btn-slide">
-          <div class="flex flex-row gap-2 text-gray-400">
-            <a
-              href="info/hariLibur.html"
-              class="btn btn-sm font-normal border border-gray-200 text-gray-700 rounded-full"
-            >
-              Hari Libur
+      <section class="px-5 pt-5">
+        <h2 class="font-semibold mb-3">Downloader</h2>
+        <div id="downloaders" class=""></div>
+        <!-- <article class="rounded-xl border-2 border-gray-100 bg-white">
+          <div class="flex items-start gap-4 p-2">
+            <a href="#" class="block shrink-0">
+              <img
+                alt=""
+                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                class="size-14 rounded-lg object-cover"
+              />
             </a>
-            <a
-              href="info/tiktokDownload.html"
-              class="btn btn-sm font-normal border border-gray-200 text-gray-700 rounded-full"
-            >
-              Tiktok Downloader
-            </a>
-            <button
-              class="btn btn-sm font-normal border border-gray-200 text-gray-700 rounded-full"
-            >
-              Development
-            </button>
-            <button
-              class="btn btn-sm font-normal border border-gray-200 text-gray-700 rounded-full"
-            >
-              Marketing
-            </button>
-            <button
-              class="btn btn-sm font-normal border border-gray-200 text-gray-700 rounded-full"
-            >
-              Art
-            </button>
-            <button
-              class="btn btn-sm font-normal border border-gray-200 text-gray-700 rounded-full"
-            >
-              Lifestyle
-            </button>
+
+            <div>
+              <h3 class="font-medium sm:text-lg">
+                <a href="#" class="hover:underline"> TikTok Downloader </a>
+              </h3>
+
+              <p class="line-clamp-2 text-sm text-gray-700">
+                Unduh Video & Music TikTok Resolusi HD dan tanpa Watermark
+              </p>
+              <div class="py-2 flex md:hidden">
+                <strong
+                  class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-green-600 px-3 py-1.5 text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+
+                  <span class="text-[10px] font-medium sm:text-xs">Online</span>
+                </strong>
+              </div>
+            </div>
           </div>
-        </div>
+          <div class="justify-end hidden md:flex">
+            <strong
+              class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-green-600 px-3 py-1.5 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                />
+              </svg>
+
+              <span class="text-[10px] font-medium sm:text-xs">Online</span>
+            </strong>
+          </div>
+        </article> -->
       </section>
     </main>
     <footer class="px-5 pt-10">
@@ -206,6 +236,15 @@
         </a>
       </div>
     </footer>
+    <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back(); // Kembali ke halaman sebelumnya
+        } else {
+          alert(""); // Jika tidak ada halaman sebelumnya
+        }
+      }
+    </script>
     <script src="../src/js/index.js"></script>
   </body>
 </html>

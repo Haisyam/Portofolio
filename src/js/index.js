@@ -7,7 +7,7 @@ function goBack() {
   }
 }
 
-// skills
+// projects
 fetch("constants/projects.json")
   .then((res) => res.json())
   .then((projects) => {
@@ -18,7 +18,7 @@ fetch("constants/projects.json")
             <div class="bg-gray-800 rounded-lg overflow-hidden">
               <img
                 alt="${project.imageAlt}"
-                class="w-full h-32 md:h-52 lg:h-52 object-cover"
+                class="w-full h-32 md:h-52 lg:h-52 object-cover rounded-md"
                 height="200"
                 src="${project.image}"
                 width="400"
@@ -108,3 +108,82 @@ fetch("constants/popularRepository.json")
       )
       .join("");
   });
+
+fetch("../constants/Tools/Downloaders.json")
+  .then((res) => res.json())
+  .then((Downloaders) => {
+    document.querySelector("#downloaders").innerHTML = Downloaders.map(
+      (Downloaders) => `
+      <article class="rounded-xl border-2 border-gray-100 bg-gray-400 mb-2">
+          <div class="flex items-start gap-4 p-2">
+            <a href="${Downloaders.link}" class="block shrink-0">
+              <img
+                alt="${Downloaders.imageAlt}"
+                src="${Downloaders.image}"
+                class="size-14 rounded-lg object-cover"
+              />
+            </a>
+
+            <div>
+              <h3 class="font-medium sm:text-lg">
+                <a href="${Downloaders.link}" class="hover:underline"> ${Downloaders.namaTools} </a>
+              </h3>
+
+              <p class="line-clamp-2 text-sm text-gray-700">
+              ${Downloaders.desk}
+              </p>
+              <div class="py-2 flex md:hidden">
+                <strong
+                  class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl ${Downloaders.warna} px-3 py-1.5 text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+
+                  <span class="text-[10px] font-medium sm:text-xs">${Downloaders.status}</span>
+                </strong>
+              </div>
+            </div>
+          </div>
+          <div class="justify-end hidden md:flex">
+            <strong
+              class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl ${Downloaders.warna} px-3 py-1.5 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                />
+              </svg>
+              <span class="text-[10px] font-medium sm:text-xs">${Downloaders.status}</span>
+            </strong>
+          </div>
+        </article>`
+    ).join("");
+  });
+// fetch("constants/Tools/Downloaders.json")
+//   .then((res) => res.json())
+//   .then((Downloaders) => {
+//     document.querySelector("#Downloaders").innerHTML = Downloaders.map(
+//       (Downloaders) => ``
+//     ).join("");
+//   });

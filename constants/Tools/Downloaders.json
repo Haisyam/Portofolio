@@ -1,0 +1,20 @@
+[
+  {
+    "link": "info/tiktokDownload.html",
+    "image": "../../src/assets/images/tiktok.png",
+    "imageAlt": "Contoh gambar",
+    "namaTools": "Tiktok Downloader",
+    "desk": "Unduh Video & Music TikTok Resolusi HD dan tanpa Watermark",
+    "status": "Online",
+    "warna": "bg-green-600"
+  },
+  {
+    "link": "#",
+    "image": "../../src/assets/images/tiktok.png",
+    "imageAlt": "Apalah",
+    "namaTools": "Ga Tau",
+    "desk": "Ga Tau Juga",
+    "status": "Offline",
+    "warna": "bg-yellow-500"
+  }
+]
