@@ -55,21 +55,22 @@
         </div>
       </nav>
       <div class="px-5 pt-2">
-        <h1 class="text-2xl font-bold">Tiktok Video Downloader no Watermark</h1>
+        <h1 class="text-2xl font-bold">Jadwal Sholat</h1>
       </div>
     </header>
     <main>
       <section id="" class="px-5 pt-2">
-        <form id="downloadForm">
+        <form id="prayerForm">
           <label
+            form="city"
             class="input input-bordered flex items-center gap-2 mt-4 rounded-3xl"
           >
             <input
-              id="url"
-              type="url"
-              name="url"
+              id="city"
+              type="text"
+              name="city"
               class="grow bg-white text-black"
-              placeholder="Tempel link disini..."
+              placeholder="Masukkan nama kecamatan/kota..."
             />
             <button
               type="submit"
@@ -78,31 +79,18 @@
               Go
             </button>
           </label>
+          <div id="currentDateTime" class="mt-2 text-center"></div>
+          <table class="table-auto w-full">
+            <thead>
+              <tr>
+                <th class="px-4 py-2">Waktu</th>
+                <th class="px-4 py-2">Pukul</th>
+              </tr>
+            </thead>
+            <tbody id="results"></tbody>
+          </table>
+          <div id="error" class="mt-3"></div>
         </form>
-        <div id="result" class="mt-5 mb-[60px] hidden">
-          <div class="text-center">
-            <video
-              id="video-result"
-              controls
-              class="video-result mt-5 mb-4 hidden mx-auto rounded-lg"
-            ></video>
-            <p class="text-black font-bold mb-4">Download Ready:</p>
-            <a
-              id="video-link"
-              href="#"
-              class="bg-blue-500 text-white text-center py-2 px-4 rounded-md hover:bg-blue-600 transition mr-2"
-            >
-              Download HD Video
-            </a>
-            <a
-              id="music-link"
-              href="#"
-              class="bg-blue-400 text-white text-center py-2 px-4 rounded-md hover:bg-blue-500 transition"
-            >
-              Download Music
-            </a>
-          </div>
-        </div>
       </section>
     </main>
     <footer class="px-5 pt-10">
@@ -195,38 +183,122 @@
           alert(""); // Jika tidak ada halaman sebelumnya
         }
       }
+
+      // Fungsi untuk mendapatkan nama hari dalam bahasa Indonesia
+      function getDayName(dayIndex) {
+        const days = [
+          "Minggu",
+          "Senin",
+          "Selasa",
+          "Rabu",
+          "Kamis",
+          "Jumat",
+          "Sabtu",
+        ];
+        return days[dayIndex];
+      }
+
+      // Fungsi untuk format tanggal dan waktu
+      function formatDateTime() {
+        const now = new Date();
+        const dayName = getDayName(now.getDay());
+        const day = String(now.getDate()).padStart(2, "0");
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const year = now.getFullYear();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        return `${dayName}, ${day}/${month}/${year} | ${hours}:${minutes}:${seconds}`;
+      }
+
+      // Menampilkan tanggal dan waktu saat ini
+      function updateDateTime() {
+        const dateTimeElement = document.getElementById("currentDateTime");
+        dateTimeElement.textContent = formatDateTime();
+      }
+
+      // Perbarui tanggal dan waktu setiap detik
+      setInterval(updateDateTime, 1000);
+
+      // Jalankan fungsi pertama kali
+      updateDateTime();
+
       document
-        .getElementById("downloadForm")
+        .getElementById("prayerForm")
         .addEventListener("submit", function (event) {
           event.preventDefault();
-          const url = document.getElementById("url").value;
+          const city = document.getElementById("city").value.trim();
+          const resultsDiv = document.getElementById("results");
+          const errorDiv = document.getElementById("error");
+
+          // Clear previous results and errors
+          resultsDiv.innerHTML = "";
+          errorDiv.textContent = "";
+
+          if (!city) {
+            errorDiv.textContent = "Nama kota tidak boleh kosong!";
+            return;
+          }
 
           fetch(
-            `https://api.tiklydown.eu.org/api/download/v3?url=${encodeURIComponent(
-              url
+            `https://api.agatz.xyz/api/jadwalsholat?kota=${encodeURIComponent(
+              city
             )}`
           )
             .then((response) => response.json())
             .then((data) => {
               if (data.status === 200) {
-                const result = data.result;
-                document.getElementById("video-link").href = result.video;
-                document.getElementById("music-link").href = result.music;
-
-                const videoResult = document.getElementById("video-result");
-                videoResult.src = result.video;
-                videoResult.classList.remove("hidden");
-
-                document.getElementById("result").classList.remove("hidden");
+                const schedule = data.data;
+                resultsDiv.innerHTML = `
+                <tr>
+                  <td class="border px-4 py-2">
+                    <span class="font-bold">Subuh</span>
+                  </td>
+                  <td class="border px-4 py-2 flex justify-center">
+                    <span class="font-bold text-white bg-blue-500 rounded-full px-3 py-1">${schedule.subuh}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">
+                    <span class="font-bold">Dzuhur</span>
+                  </td>
+                  <td class="border px-4 py-2 flex justify-center">
+                    <span class="font-bold text-white bg-blue-500 rounded-full px-3 py-1">${schedule.dhuhur}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">
+                    <span class="font-bold">Ashar</span>
+                  </td>
+                  <td class="border px-4 py-2 flex justify-center">
+                    <span class="font-bold text-white bg-blue-500 rounded-full px-3 py-1">${schedule.ashar}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">
+                    <span class="font-bold">Maghrib</span>
+                  </td>
+                  <td class="border px-4 py-2 flex justify-center">
+                    <span class="font-bold text-white bg-blue-500 rounded-full px-3 py-1">${schedule.maghrib}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border px-4 py-2">
+                    <span class="font-bold">Isya</span>
+                  </td>
+                  <td class="border px-4 py-2 flex justify-center">
+                    <span class="font-bold text-white bg-blue-500 rounded-full px-3 py-1">${schedule.isya}</span>
+                  </td>
+                </tr>
+            `;
               } else {
-                alert(
-                  "Failed to fetch download links. Please check the URL and try again."
-                );
+                errorDiv.textContent =
+                  "Kota tidak ditemukan atau terjadi kesalahan.";
               }
             })
             .catch((error) => {
               console.error("Error:", error);
-              alert("An error occurred. Please try again.");
+              errorDiv.textContent = "Terjadi kesalahan. Silakan coba lagi.";
             });
         });
     </script>

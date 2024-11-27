@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cek Jadwal Salat</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .input-group {
+        margin-bottom: 15px;
+      }
+      .results {
+        margin-top: 20px;
+      }
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cek Jadwal Salat</h1>
+    <form id="prayerForm">
+      <div class="input-group">
+        <label for="city">Nama Kota:</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="Masukkan nama kota..."
+          required
+        />
+      </div>
+      <button type="submit">Cek Jadwal</button>
+    </form>
+    <div id="results" class="results"></div>
+    <div id="error" class="error"></div>
+
+    <script>
+      document
+        .getElementById("prayerForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const city = document.getElementById("city").value.trim();
+          const resultsDiv = document.getElementById("results");
+          const errorDiv = document.getElementById("error");
+
+          // Clear previous results and errors
+          resultsDiv.innerHTML = "";
+          errorDiv.textContent = "";
+
+          if (!city) {
+            errorDiv.textContent = "Nama kota tidak boleh kosong!";
+            return;
+          }
+
+          fetch(
+            `https://api.agatz.xyz/api/jadwalsholat?kota=${encodeURIComponent(
+              city
+            )}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status === 200) {
+                const schedule = data.data;
+                resultsDiv.innerHTML = `
+              <h2>Jadwal Salat untuk ${city}</h2>
+              <p><strong>Subuh:</strong> ${schedule.subuh}</p>
+              <p><strong>Dzuhur:</strong> ${schedule.dhuhur}</p>
+              <p><strong>Ashar:</strong> ${schedule.ashar}</p>
+              <p><strong>Maghrib:</strong> ${schedule.maghrib}</p>
+              <p><strong>Isya:</strong> ${schedule.isya}</p>
+            `;
+              } else {
+                errorDiv.textContent =
+                  "Kota tidak ditemukan atau terjadi kesalahan.";
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              errorDiv.textContent = "Terjadi kesalahan. Silakan coba lagi.";
+            });
+        });
+    </script>
+  </body>
+</html>

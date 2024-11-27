@@ -59,7 +59,7 @@
       </div>
     </header>
     <main>
-      <section id="" class="px-5 pt-2">
+      <section id="" class="px-5 pt-5">
         <form id="downloadForm">
           <label
             class="input input-bordered flex items-center gap-2 mt-4 rounded-3xl"
@@ -202,21 +202,25 @@
           const url = document.getElementById("url").value;
 
           fetch(
-            `https://api.tiklydown.eu.org/api/download/v3?url=${encodeURIComponent(
+            `https://itzpire.com/download/youtube?url=${encodeURIComponent(
               url
             )}`
           )
             .then((response) => response.json())
             .then((data) => {
-              if (data.status === 200) {
-                const result = data.result;
-                document.getElementById("video-link").href = result.video;
-                document.getElementById("music-link").href = result.music;
+              if (data.status === "success") {
+                const result = data.data;
 
+                // Update video and music download links
+                document.getElementById("video-link").href = result.video.url;
+                document.getElementById("music-link").href = result.audio.url;
+
+                // Update video preview
                 const videoResult = document.getElementById("video-result");
-                videoResult.src = result.video;
+                videoResult.src = result.video.url;
                 videoResult.classList.remove("hidden");
 
+                // Show result container
                 document.getElementById("result").classList.remove("hidden");
               } else {
                 alert(

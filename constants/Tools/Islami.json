@@ -1,0 +1,11 @@
+[
+  {
+    "link": "info/islamiJadwalSholat.html",
+    "image": "../../src/assets/images/mosque.png",
+    "imageAlt": "Contoh gambar",
+    "namaTools": "Jadwal Sholat",
+    "desk": "Cek Waktu Sholat di Kota Tertentu secara Real-Time",
+    "status": "Online",
+    "warna": "bg-green-600"
+  }
+]
