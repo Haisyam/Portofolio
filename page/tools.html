@@ -183,7 +183,149 @@
           alert(""); // Jika tidak ada halaman sebelumnya
         }
       }
+      fetch("../constants/Tools/Downloaders.json")
+        .then((res) => res.json())
+        .then((Downloaders) => {
+          document.querySelector("#downloaders").innerHTML = Downloaders.map(
+            (Downloaders) => `
+      <article class="rounded-xl border-2 border-gray-200 bg-gray-100 mb-2">
+          <div class="flex items-start gap-4 p-2">
+            <a href="${Downloaders.link}" class="block shrink-0">
+              <img
+                alt="${Downloaders.imageAlt}"
+                src="${Downloaders.image}"
+                class="size-14 rounded-lg object-cover"
+              />
+            </a>
+
+            <div>
+              <h3 class="font-medium sm:text-lg">
+                <a href="${Downloaders.link}" class="hover:underline"> ${Downloaders.namaTools} </a>
+              </h3>
+
+              <p class="line-clamp-2 text-sm text-gray-700">
+              ${Downloaders.desk}
+              </p>
+              <div class="py-2 flex md:hidden">
+                <strong
+                  class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl ${Downloaders.warna} px-3 py-1.5 text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+
+                  <span class="text-[10px] font-medium sm:text-xs">${Downloaders.status}</span>
+                </strong>
+              </div>
+            </div>
+          </div>
+          <div class="justify-end hidden md:flex">
+            <strong
+              class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl ${Downloaders.warna} px-3 py-1.5 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                />
+              </svg>
+              <span class="text-[10px] font-medium sm:text-xs">${Downloaders.status}</span>
+            </strong>
+          </div>
+        </article>`
+          ).join("");
+        });
+      fetch("../constants/Tools/Islami.json")
+        .then((res) => res.json())
+        .then((Islami) => {
+          document.querySelector("#islami").innerHTML = Islami.map(
+            (Islami) => `
+      <article class="rounded-xl border-2 border-gray-200 bg-gray-100 mb-2">
+          <div class="flex items-start gap-4 p-2">
+            <a href="${Islami.link}" class="block shrink-0">
+              <img
+                alt="${Islami.imageAlt}"
+                src="${Islami.image}"
+                class="size-14 rounded-lg object-cover"
+              />
+            </a>
+
+            <div>
+              <h3 class="font-medium sm:text-lg">
+                <a href="${Islami.link}" class="hover:underline"> ${Islami.namaTools} </a>
+              </h3>
+
+              <p class="line-clamp-2 text-sm text-gray-700">
+              ${Islami.desk}
+              </p>
+              <div class="py-2 flex md:hidden">
+                <strong
+                  class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl ${Islami.warna} px-3 py-1.5 text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+
+                  <span class="text-[10px] font-medium sm:text-xs">${Islami.status}</span>
+                </strong>
+              </div>
+            </div>
+          </div>
+          <div class="justify-end hidden md:flex">
+            <strong
+              class="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl ${Islami.warna} px-3 py-1.5 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                />
+              </svg>
+              <span class="text-[10px] font-medium sm:text-xs">${Islami.status}</span>
+            </strong>
+          </div>
+        </article>`
+          ).join("");
+        });
     </script>
-    <script src="../src/js/index.js"></script>
+    <!-- <script src="../src/js/index.js"></script> -->
   </body>
 </html>

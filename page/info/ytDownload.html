@@ -94,13 +94,6 @@
             >
               Download HD Video
             </a>
-            <a
-              id="music-link"
-              href="#"
-              class="bg-blue-400 text-white text-center py-2 px-4 rounded-md hover:bg-blue-500 transition"
-            >
-              Download Music
-            </a>
           </div>
         </div>
       </section>
@@ -202,26 +195,38 @@
           const url = document.getElementById("url").value;
 
           fetch(
-            `https://itzpire.com/download/youtube?url=${encodeURIComponent(
+            `https://api.neastooid.xyz/api/downloader/igdl?url=${encodeURIComponent(
               url
             )}`
           )
             .then((response) => response.json())
             .then((data) => {
-              if (data.status === "success") {
-                const result = data.data;
+              if (data.success) {
+                const result = data.data[0]; // Mengambil data pertama dari response
 
-                // Update video and music download links
-                document.getElementById("video-link").href = result.video.url;
-                document.getElementById("music-link").href = result.audio.url;
-
-                // Update video preview
+                // Set URL video (jika ada)
                 const videoResult = document.getElementById("video-result");
-                videoResult.src = result.video.url;
+                videoResult.src = result.url;
                 videoResult.classList.remove("hidden");
 
-                // Show result container
+                // Set URL gambar thumbnail (jika ada)
+                const thumbnail = document.createElement("img");
+                thumbnail.src = result.thumbnail;
+                thumbnail.alt = "Thumbnail";
+                thumbnail.classList.add("rounded-lg", "mx-auto", "my-4");
+
+                // Menampilkan gambar thumbnail
+                const resultContainer = document.getElementById("result");
+                resultContainer.insertBefore(
+                  thumbnail,
+                  resultContainer.firstChild
+                );
+
+                // Menampilkan hasil
                 document.getElementById("result").classList.remove("hidden");
+                document.getElementById("video-link").href = result.url;
+                document.getElementById("video-link").textContent =
+                  "Download Video";
               } else {
                 alert(
                   "Failed to fetch download links. Please check the URL and try again."
