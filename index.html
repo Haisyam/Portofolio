@@ -133,7 +133,7 @@
         </div>
       </section>
       <section id="otherProjects" class="px-5 pt-5">
-        <h2 class="font-semibold mb-3">Other Projects</h2>
+        <h2 class="font-semibold mb-3">Templates</h2>
         <div id="projects" class="grid grid-cols-2 gap-3">
           <!-- constant/prjects.json -->
         </div>
@@ -250,7 +250,7 @@
           document.querySelector("#projects").innerHTML = projects
             .map(
               (project) =>
-                `<article class="bg-gray-100 rounded-lg p-3">
+                `<article class="bg-gray-100 rounded-lg p-2">
             <div class="bg-gray-800 rounded-lg overflow-hidden">
               <img
                 alt="${project.imageAlt}"
@@ -307,6 +307,7 @@
             <h3 class="text-sm font-semibold">
             ${popularRepository.title}
             </h3>
+            <p class="text-xs font-normal">${popularRepository.imageAlt}</p>
             <p class="text-xs font-normal text-gray-500 flex items-center">
               <svg
                 class="w-[12px] h-[12px] fill-[#bfbfbf] mr-1"

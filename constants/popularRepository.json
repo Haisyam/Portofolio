@@ -1,16 +1,30 @@
 [
   {
-    "title": "Project UAS 2023 - DreamLMS - Laravel10",
-    "image": "https://storage.googleapis.com/a1aa/image/qADCfuZyBft6QEzohrHtMb6rrDWkcE4uXKbOejEgiK4l7ieOB.jpg",
-    "imageAlt": "Project UAS 2023 DreamLMS Menggunakan Laravel versi 10",
-    "link": "#",
-    "date": "7/23"
+    "title": "Upload Gdrive",
+    "image": "src/assets/images/github.png",
+    "imageAlt": "Upload File ke Google Drive Otomatis menggunakan App Script Google",
+    "link": "https://github.com/Haisyam/Upload-Gdrive",
+    "date": "7/24"
   },
   {
-    "title": "Project UAS 2023 - DreamLMS - Laravel10",
-    "image": "https://storage.googleapis.com/a1aa/image/qADCfuZyBft6QEzohrHtMb6rrDWkcE4uXKbOejEgiK4l7ieOB.jpg",
-    "imageAlt": "Project UAS 2023 DreamLMS Menggunakan Laravel versi 10",
-    "link": "#",
-    "date": "7/23"
+    "title": "NeoTron Downloader",
+    "image": "src/assets/images/github.png",
+    "imageAlt": "NeoTron adalah Website Layanan Downloader Video Social Media: TikTok, YouTube, Facebook, Twitter.",
+    "link": "https://github.com/Haisyam/NeoTron-Downloader",
+    "date": "7/24"
+  },
+  {
+    "title": "BioLink CRUD",
+    "image": "src/assets/images/github.png",
+    "imageAlt": "Button seperti linktree",
+    "link": "https://github.com/Haisyam/BioLink-CRUD",
+    "date": "7/24"
+  },
+  {
+    "title": "Exif-C v2",
+    "image": "src/assets/images/github.png",
+    "imageAlt": "Website Kelas + CRUD",
+    "link": "https://github.com/Haisyam/Exif-C-v2",
+    "date": "7/24"
   }
 ]

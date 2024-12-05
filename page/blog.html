@@ -84,6 +84,9 @@
     <main>
       <section id="categories" class="px-5 pt-4">
         <h2 class="font-semibold mb-3">New Post</h2>
+        <div id="projects" class="grid grid-cols-2 gap-3">
+          <!-- constant/prjects.json -->
+        </div>
       </section>
     </main>
     <footer class="px-5 pt-10">
@@ -167,5 +170,50 @@
       </div>
     </footer>
     <script src="../src/js/index.js"></script>
+    <script>
+      // Project List
+      fetch("../constants/template.json")
+        .then((res) => res.json())
+        .then((projects) => {
+          document.querySelector("#projects").innerHTML = projects
+            .map(
+              (project) =>
+                `<article class="bg-gray-100 rounded-lg p-2">
+            <div class="bg-gray-800 rounded-lg overflow-hidden">
+              <img
+                alt="${project.imageAlt}"
+                class="w-full h-32 md:h-52 lg:h-52 object-cover rounded-md"
+                height="200"
+                src="${project.image}"
+                width="400"
+              />
+            </div>
+            <div class="mt-4">
+              <h4 class="text-sm font-semibold">
+                ${project.title}
+              </h4>
+              <div class="flex justify-between items-baseline text-gray-500 mt-2">
+                <p class="text-xs font-normal text-gray-500 flex items-baseline">
+                  <svg
+                    class="w-[12px] h-[12px] fill-[#ffdd00] mr-1"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"
+                    ></path>
+                  </svg>
+                  ${project.date}
+                </p>
+                <a class="ml-auto text-gray-800 text-sm font-normal" href="${project.link}">
+                  Detail
+                </a>
+              </div>
+            </div>
+          </article>`
+            )
+            .join("");
+        });
+    </script>
   </body>
 </html>
